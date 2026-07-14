@@ -1,0 +1,16 @@
+<h2>Customer List</h2>
+
+<table>
+  <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Orders</th></tr></thead>
+  <tbody>
+    {{#each customers}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{fullName}}</td>
+        <td>{{email}}</td>
+        <td>{{role}}</td>
+        <td><a href="/admin/customers/{{id}}/orders">View Orders</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

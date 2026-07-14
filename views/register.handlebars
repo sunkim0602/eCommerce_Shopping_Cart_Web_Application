@@ -1,0 +1,38 @@
+<h2>Create Account</h2>
+
+{{#if error}}
+  <p style="color:red">{{error}}</p>
+{{/if}}
+
+<form method="POST" action="/register">
+  <div class="form-row">
+    <label>Full name:</label>
+    <input type="text" name="fullName" value="{{values.fullName}}">
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="{{values.email}}" required>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" required>
+  </div>
+
+  <div class="form-row">
+    <label>Account type:</label>
+    <select name="role">
+      <option value="customer">Customer</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="adminCode">Admin code</label>
+    <input id="adminCode" type="password" name="adminCode">
+  </div>
+
+  <div class="form-row">
+    <button type="submit">Register</button>
+  </div>

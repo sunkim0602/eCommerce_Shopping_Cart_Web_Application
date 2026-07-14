@@ -1,0 +1,30 @@
+<h2>Your Cart</h2>
+
+{{#if cartItems.length}}
+  <table>
+    <thead>
+      <tr><th>Product</th><th class="right">Qty</th><th class="right">Price</th></tr>
+    </thead>
+    <tbody>
+      {{#each cartItems}}
+        <tr>
+          <td>{{name}}</td>
+          <td class="right">{{quantity}}</td>
+          <td class="right">${{price}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <form method="POST" action="/cart/submit">
+    <button type="submit">Submit Order</button>
+  </form>
+  <form method="POST" action="/cart/clear">
+    <button type="submit">Clear Cart</button>
+  </form>
+{{else}}
+  <p>Cart is empty.</p>
+{{/if}}
+
+{{#if error}}<p style="color:red">{{error}}</p>{{/if}}
+{{#if success}}<p style="color:green">{{success}}</p>{{/if}}

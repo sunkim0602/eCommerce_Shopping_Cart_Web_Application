@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shopping Cart</title>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    nav a { margin-right: 12px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    .right { text-align: right; }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="logo-container">
+      <a href="/">
+        <img
+          src="/images/sk-electronics-logo.png"
+          alt="SK Electronics Logo"
+          class="site-logo"
+        />
+      </a>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/cart">Cart</a>
+
+    {{#if user}}
+      <a href="/orders">My Orders</a>
+
+      {{#if userIsAdmin}}
+        <a href="/admin/products">Manage Products</a>
+        <a href="/admin/customers">Manage Customers</a>
+      {{/if}}
+
+      <div class="user-info">
+        <span>Signed in as: {{user.fullName}} ({{user.role}})</span>
+        <a href="/logout">Logout</a>
+      </div>
+    {{else}}
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    {{/if}}
+  </nav>
+
+  <hr/>
+
+  {{{body}}}
+
+</body>
+</html>

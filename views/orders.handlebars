@@ -1,0 +1,21 @@
+<h2>My Orders</h2>
+
+{{#if orders.length}}
+  {{#each orders}}
+    <h3>Order #{{id}} ({{status}})</h3>
+    <table>
+      <thead><tr><th>Product</th><th class="right">Qty</th><th class="right">Unit Price</th></tr></thead>
+      <tbody>
+        {{#each OrderItems}}
+          <tr>
+            <td>{{Product.name}}</td>
+            <td class="right">{{quantity}}</td>
+            <td class="right">${{unitPrice}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/each}}
+{{else}}
+  <p>No orders yet.</p>
+{{/if}}

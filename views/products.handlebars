@@ -1,0 +1,83 @@
+<h2>Products</h2>
+
+<!-- Search button -->
+<form method="GET" action="/products">
+  <input
+    type="text"
+    name="term"
+    placeholder="Search products"
+    value="{{term}}"
+  />
+  <input type="hidden" name="min" value="{{min}}">
+  <input type="hidden" name="max" value="{{max}}">
+  <button type="submit">Search</button>
+</form>
+
+<!-- filter buttons -->
+<form method="GET" action="/products">
+  <input type="hidden" name="term" value="{{term}}">
+  <input
+    type="number"
+    name="min"
+    placeholder="Min price"
+    value="{{min}}"
+  />
+  <input
+    type="number"
+    name="max"
+    placeholder="Max price"
+    value="{{max}}"
+  />
+  <button type="submit">Apply Filter</button>
+</form>
+
+<!-- reset button -->
+<form method="GET" action="/products">
+  <button type="submit">Clear</button>
+</form>
+
+{{#if message}}
+  <div
+    id="flashMessage"
+    style="background-color: {{message.bg}}; color: {{message.color}}; padding: 10px 14px; border-radius: 6px; margin: 12px 0;"
+  >
+    {{message.text}}
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const el = document.getElementById("flashMessage");
+      if (el) el.style.display = "none";
+    }, 2000);
+  </script>
+{{/if}}
+{{#if error}}<p style="color:red">{{error}}</p>{{/if}}
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th><th>Name</th><th>Description</th>
+      <th class="right">Price</th><th class="right">Stock</th><th>Add</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{description}}</td>
+        <td class="right">${{price}}</td>
+        <td class="right">{{stockQty}}</td>
+        <td>
+          <form method="POST" action="/cart/add">
+            <input type="hidden" name="productId" value="{{id}}" />
+            <input type="hidden" name="returnTo" value="/products{{#if ../term}}?term={{../term}}{{/if}}">
+            <input type="number" name="quantity" value="1" min="1" style="width:70px" />
+            <button type="submit">Add</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

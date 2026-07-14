@@ -1,0 +1,10 @@
+.site-logo {
+  height: 120px;
+  width: auto;
+}
+
+.user-info {
+  margin-left: 16px;
+  font-size: 0.9rem;
+  color: #555;
+}

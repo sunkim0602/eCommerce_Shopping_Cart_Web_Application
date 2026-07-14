@@ -1,0 +1,35 @@
+<h2>Admin - Orders for {{customer.fullName}}</h2>
+
+{{#if orders.length}}
+  {{#each orders}}
+    <h3>Order #{{id}} ({{status}})</h3>
+
+    <form method="POST" action="/admin/orders/{{id}}/status">
+      <select name="status">
+        <option value="submitted">submitted</option>
+        <option value="updated">updated</option>
+        <option value="cancelled">cancelled</option>
+      </select>
+      <button type="submit">Update Status</button>
+    </form>
+
+    <form method="POST" action="/admin/orders/{{id}}/delete">
+      <button type="submit">Delete Order</button>
+    </form>
+
+    <table>
+      <thead><tr><th>Product</th><th class="right">Qty</th><th class="right">Unit Price</th></tr></thead>
+      <tbody>
+        {{#each OrderItems}}
+          <tr>
+            <td>{{Product.name}}</td>
+            <td class="right">{{quantity}}</td>
+            <td class="right">${{unitPrice}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/each}}
+{{else}}
+  <p>No orders.</p>
+{{/if}}
