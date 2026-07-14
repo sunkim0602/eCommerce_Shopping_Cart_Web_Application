@@ -16,77 +16,91 @@ Instructions - How to Run the Application
 3. Open ‘http://localhost:3000’
 
 Term Project Requirements - Implementation Mapping & Tech Stack
-	•	NodeJS-centric using ExpressJS - the application is implemented using Node.js with the Express framework as the core server
-	⁃	main server initialization in server.js
-	⁃	Express routing in routes/
-	⁃	Middleware and session handling implemented server-side
-	•	Server-side
-	⁃	Product search/filter handled in Express routes
-	⁃	Cart stored in session
-	⁃	Order validation and stock checking
-	⁃	Database queries
-	⁃	Views rendered via Handlebars
-	•	Persistence of Data (Sequelize & SQLite)
-	⁃	Database connection: db/index.js
-	⁃	Models: models/
-	⁃	SQLite file: shopping.sqlite
-	•	REST API Endpoints
-	⁃	GET /api/products
-	⁃	GET /api/products/search?term=usb
-	⁃	GET /api/products/price?min=10&max=50
-	•	GraphQL Endpoints - implemented using Apollo Server
-	⁃	schema - graphql/schema.js
-	⁃	resolvers - graphql/graphql.js
-	•	PassportJS Authentication/Authorization
-	⁃	auth/passport.js
-	⁃	auth/middleware.js
-	•	Handlebars Front-End View Pages
-	⁃	views/products.handlebars
-	⁃	views/cart.handlebars
-	⁃	views/orders.handlebars
-	⁃	views/admin/*.handlebars
+- **NodeJS-centric using ExpressJS**
+  - Main server initialization in `server.js`
+  - Express routing in `routes/`
+  - Middleware and session handling implemented server-side
 
-Features
-Customer Interface:
-	⁃	Registers customer account
-	⁃	Login/logout - authentication
-	⁃	View product list
-	⁃	Search products by keyword
-	⁃	Filter products by price range
-	⁃	Specify quantity and add items to cart
-	⁃	Submit orders
-	⁃	View their order history
+- **Server-side**
+  - Product search/filter handled in Express routes
+  - Cart stored in session
+  - Order validation and stock checking
+  - Database queries
+  - Views rendered via Handlebars
 
-Admin Interface:
-	⁃	Add products
-	⁃	Update products
-	⁃	Delete products
-	⁃	View all customers
-	⁃	View orders per customer
-	⁃	Update order status
-	⁃	Delete orders
+- **Persistence of Data (Sequelize & SQLite)**
+  - Database connection: `db/index.js`
+  - Models: `models/`
+  - SQLite file: `shopping.sqlite`
 
-Test Users
-Admin:
-Email - admin@shop.com
-Password - admin123
-*When creating a new admin login profile, use ‘cs602admin’ for the admin code
-Customer:
-Email - customer@shop.com
-Password - customer123
+- **REST API Endpoints**
+  - `GET /api/products`
+  - `GET /api/products/search?term=usb`
+  - `GET /api/products/price?min=10&max=50`
 
-Dependencies
-This project uses the following main libraries:
-	•	Express — web server framework
-	•	Sequelize + SQLite — relational database persistence
-	•	PassportJS — authentication and authorization
-	•	Apollo Server (GraphQL) — GraphQL API
-	•	Express-Handlebars — server-side views
+- **GraphQL Endpoints (Apollo Server)**
+  - Schema: `graphql/schema.js`
+  - Resolvers: `graphql/graphql.js`
 
+- **PassportJS Authentication/Authorization**
+  - `auth/passport.js`
+  - `auth/middleware.js`
 
+- **Handlebars Front-End Views**
+  - `views/products.handlebars`
+  - `views/cart.handlebars`
+  - `views/orders.handlebars`
+  - `views/admin/*.handlebars`
 
+## Features
 
+### Customer Interface
 
+- Register customer account
+- Login/logout authentication
+- View product list
+- Search products by keyword
+- Filter products by price range
+- Specify quantity and add items to shopping cart
+- Submit orders
+- View order history
 
+### Admin Interface
 
+- Add products
+- Update products
+- Delete products
+- View all customers
+- View customer orders
+- Update order status
+- Delete orders
 
+---
+
+## Test Users
+
+### Administrator
+
+**Email:** `admin@shop.com`  
+**Password:** `admin123`
+
+> **Note:** When creating a new administrator account, use the admin code:
+>
+> `cs602admin`
+
+### Customer
+
+**Email:** `customer@shop.com`  
+**Password:** `customer123`
+
+---
+
+## Dependencies
+
+This project uses the following libraries:
+
+- **Express** — Web server framework
+- **Sequelize + SQLite** — Relational database and ORM
+- **PassportJS** — User authentication and authorization
+- **Apollo Server (GraphQL)** — GraphQL API implementation
+- **Express-Handlebars** — Server-side view rendering
